@@ -1,0 +1,86 @@
+# Define a function to perform addition
+function add(numbers):
+    return sum(numbers)
+
+# Define a function to perform subtraction
+function subtract(a, b):
+    return a - b
+
+# Define a function to perform multiplication
+function multiply(numbers):
+    result = 1
+    for number in numbers:
+        result = result * number
+    return result
+
+# Define a function to perform division
+function divide(a, b):
+    if b == 0:
+        return "Error: Division by zero"
+    return a / b
+
+# Define a function to calculate the average
+function average(numbers):
+    return sum(numbers) / length(numbers)
+
+# Main function to run the calculator
+function main():
+    while true:
+        clear_console()
+        print("Choose an operation:")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Average")
+        print("-1. Exit")
+
+        choice = get_user_input()
+
+        if choice == -1:
+            break
+
+        if choice == 1:
+            numbers = get_numbers_from_user()
+            result = add(numbers)
+        elif choice == 2:
+            a, b = get_two_numbers_from_user()
+            result = subtract(a, b)
+        elif choice == 3:
+            numbers = get_numbers_from_user()
+            result = multiply(numbers)
+        elif choice == 4:
+            a, b = get_two_numbers_from_user()
+            result = divide(a, b)
+        elif choice == 5:
+            numbers = get_numbers_from_user()
+            result = average(numbers)
+        else:
+            print("Invalid choice")
+            continue
+
+        print("Result:", result)
+        wait_for_user()
+
+# Helper functions
+function get_user_input():
+    return input()
+
+function get_numbers_from_user():
+    print("Enter numbers separated by spaces:")
+    return map(int, input().split())
+
+function get_two_numbers_from_user():
+    print("Enter two numbers separated by space:")
+    return map(int, input().split())
+
+function clear_console():
+    # Clear the console (implementation depends on the environment)
+    pass
+
+function wait_for_user():
+    print("Press Enter to continue...")
+    input()
+
+# Run the main function
+main()
