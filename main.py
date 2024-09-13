@@ -5,6 +5,8 @@ The time module provides various time-related functions, like getting the curren
 the execution of the script."""
 import os
 import time
+import statistics
+import math
 
 
 def addition():
@@ -62,9 +64,40 @@ def division():
     # # print( n1/n2)
     # return n1/n2
 
+# # Example usage
+# print(division())
+
+def average():
+    """This function takes space space separated number series and then convert it to a list. Then calculates the average
+    of that list of numbers."""
+    nums = list(map(float,input("Enter all numbers separated by space: ").split()))
+    # result = sum(nums)/len(nums)
+    # Alternatively, we can use the statistics method, which provides a built-in function for calculating the mean.
+    result = statistics.mean(nums)
+    return result
+# # Example usage
+# print(average())
+
+def factorial():
+    """ Function to calculate the factorial of a number. Takes a number as an argument,
+    calculates the factorial of the number, and returns the result"""
+    # nums = int(input("Please enter an integer number: "))
+    # result = 1
+    # for num in range(nums):
+    #     result *= num + 1
+    # return result
+    """Another approach is to use math module, which provides a built-in factorial function"""
+    """Add an if statement to check if the input is an integer and return an "Invalid input" message if it's not."""
+    try: # the try block attempts to convert the input to an integer
+        nums = int(input("Please enter an integer number: "))
+        if nums < 0:
+            return "Invalid input: Please enter a non-negative integer."
+    except ValueError:
+        # if the input is not an integer, a ValueError is raised, and the except block return an "Invalid input" message
+        # An additional check ensures the number is non-negative, as functorials are defined for non-negative integers only
+        return "Invalid input: Please enter an integer. "
+
+    return math.factorial(nums)
 # Example usage
-print(division())
-
-
-
+print(factorial())
 
