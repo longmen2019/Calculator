@@ -149,7 +149,7 @@ while c != "-1":
     print("Enter '5' for average")
     print("Enter '6' for factorial")
     print("Enter '7' for complex arithmetic")
-    print("ENter '8'  for binomial")
+    print("Enter '8'  for binomial")
     print("Enter '-1' to exit.\n")
 
     c = input("Your choice is: ")

@@ -1,32 +1,24 @@
-'''
-Change words to number and find the update read me, and update on linkedin or replit
-'''
 
+"""
+import statistics for calculating statistical measures.
+The time module provides various time-related functions, like getting the current time or pausing
+the execution of the script.
+Import math for mathematical functions and constants
+"""
 
-# """Imports the os and time modules from the Python Standard Library.
-# The os module provides a way of using operating system dependent functionality,
-# like reading or writing to the file system.
-# The time module provides various time-related functions, like getting the current time or pausing
-# the execution of the script."""
-import os
 import time
 import statistics
 import math
 
-#
-# '''Adding a question that ask, what would you like to do, and when the responder said i want to this function or that function it will directily
-# take him to the function'''
-#
-#
-def addition(nums):
+
+'''Adding a question that ask, what would you like to do, and when the responder said i want to this function or that function it will directily
+take him to the function'''
+
+def addition():
     """This function asks the user to enter a series of numbers separated by spaces. It then adds all the numbers
     together and returns the result."""
     nums = list(map(float, (input("Enter all numbers separately by space: ").split())))
     return sum(nums)
-
-
-# # print(addition())
-#
 
 def subtraction():
     """This function asks the user to enter a series of number separated by spaces. It then subtracts the second
@@ -39,9 +31,7 @@ def subtraction():
     for num in nums[1:]:
         result -= num
     return result
-#
-#
-# # print(subtraction())
+
 def multiplication():
     """This function asks the user to enter a series of number separated by spaces. It then multiply all the numbers
     together and return the result."""
@@ -54,9 +44,6 @@ def multiplication():
     # for num in nums:
     #     result *= num
     return result
-
-
-# print(multiplication())
 
 def division():
     """This function asks the user to enter a series of numbers separated by spaces. It then divides the first number
@@ -170,28 +157,25 @@ def binomial(nums):
 def main():
     while True:
         print(
-            "Choose an operation: (addition, subtraction, multiplication, division, average, "
-            "factorial, complex_calculator, binomial coefficient, or quit)")
+            "Choose an operation:\n'1' for addition,\n'2' for  subtraction,\n'3' for multiplication,\n'4' for  "
+            "division,\n'5' for  average,\n'6' for factorial,\n'7' for  complex_calculator,\n'8' for  "
+            "binomial coefficient,\n or quit")
         choice = input().strip().lower()
-        if choice == 'addition':
+        if choice == '1':
             print(f"Result: {addition()}")
-        elif choice == 'subtraction':
+        elif choice == '2':
             print(f"Result: {subtraction()}")
-        elif choice == 'multiplication':
+        elif choice == '3':
             print(f"Result: {multiplication()}")
-        elif choice == 'division':
+        elif choice == '4':
             print(f"Result: {division()}")
-        elif choice == 'average':
+        elif choice == '5':
             print(f"Result: {average()}")
-        elif choice == 'factorial':
-            num = int(input("Enter the number: "))
-            if num < 0:
-                print("Invalid entry")
-                continue
-            print(f"Result: {factorial(num)}")
-        elif choice == 'complex_calculator':
+        elif choice == '6':
+            print(f"Result: {factorial()}")
+        elif choice == '7':
             print(f"Result: {complex_calculator()}")
-        elif choice == 'binomial coefficient':
+        elif choice == '8':
             nums = list(map(int, input("Enter all numbers separated by space (exactly 2 elements): ").split()))
             if len(nums) != 2:
                 print("Error: Please enter exactly 2 numbers.")
@@ -207,4 +191,6 @@ def main():
             print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
+    time.sleep(1)
     main()
+
