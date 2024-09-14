@@ -8,12 +8,17 @@ import time
 import statistics
 import math
 
+'''Adding a question that ask, what would you like to do, and when the responder said i want to this function or that function it will directily
+take him to the function'''
+
 
 def addition():
     """This function asks the user to enter a series of numbers separated by spaces. It then adds all the numbers
     together and returns the result."""
-    nums = list(map(float,(input("Enter all numbers separately by space: ").split())))
+    nums = list(map(float, (input("Enter all numbers separately by space: ").split())))
     return sum(nums)
+
+
 # print(addition())
 
 def subtraction():
@@ -25,8 +30,10 @@ def subtraction():
     nums = list(map(float, input("Enter all numbers separately by space: ").split()))
     result = nums[0]
     for num in nums[1:]:
-        result -=num
+        result -= num
     return result
+
+
 # print(subtraction())
 def multiplication():
     """This function asks the user to enter a series of number separated by spaces. It then multiply all the numbers
@@ -40,6 +47,8 @@ def multiplication():
     # for num in nums:
     #     result *= num
     return result
+
+
 # print(multiplication())
 
 def division():
@@ -64,17 +73,20 @@ def division():
     # # print( n1/n2)
     # return n1/n2
 
+
 # # Example usage
 # print(division())
 
 def average():
     """This function takes space space separated number series and then convert it to a list. Then calculates the average
     of that list of numbers."""
-    nums = list(map(float,input("Enter all numbers separated by space: ").split()))
+    nums = list(map(float, input("Enter all numbers separated by space: ").split()))
     # result = sum(nums)/len(nums)
     # Alternatively, we can use the statistics method, which provides a built-in function for calculating the mean.
     result = statistics.mean(nums)
     return result
+
+
 # # Example usage
 # print(average())
 
@@ -88,7 +100,7 @@ def factorial():
     # return result
     """Another approach is to use math module, which provides a built-in factorial function"""
     """Add an if statement to check if the input is an integer and return an "Invalid input" message if it's not."""
-    try: # the try block attempts to convert the input to an integer
+    try:  # the try block attempts to convert the input to an integer
         nums = int(input("Please enter an integer number: "))
         if nums < 0:
             return "Invalid input: Please enter a non-negative integer."
@@ -99,5 +111,90 @@ def factorial():
 
     return math.factorial(nums)
 # Example usage
-print(factorial())
+# print(factorial())
+def complex_arithmetic():
 
+    """
+    Function to execute complex arithmetic operations such as addition, subtraction, multiplication, and division.
+    Asks the user to choose the operation and input the complex numbers as real and imaginary parts, performs to
+    operation, and returns the result.
+    """
+    print("Enter '1' for complex addition ")
+    print("Enter '2' for complex subtraction ")
+    print("Enter '3' for complex multiplication")
+    print("Enter 4 for complex division")
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        nums = list(map(int,input("Enter all numbers separated by space: ").split()))
+        # real_sum = 0
+        # imag_sum = 0
+        # for i in range(0, len(nums)-1, 2):
+        #     real_sum += nums[i]
+        # for i in range(2, len(nums)-1, 2):
+        #     imag_sum += nums[i]
+        # imag_sum += nums[-1]
+        # return f"{real_sum}+ i{imag_sum}"
+        # Alternate method
+        real_sum = sum(nums[0::2]) # Sum of all real parts (even indices)
+        imag_sum = sum(nums[1::2]) # Sum of all real parts (odd indices)
+        return f"{real_sum} + i{imag_sum}"
+    elif choice == "2":
+        nums = list(map(int, input("Enter all numbers separated by space: ").split()))
+        real_sub = nums[0]
+        imag_sub = nums[1]
+        for i in range(2, len(nums), 2):
+            real_sub -= nums[i]
+        for i in range(3, len(nums), 2):
+            imag_sub -= nums[i]
+        return f"{real_sub} + i{imag_sub}"
+
+    elif choice == "3":
+        nums = list(map(int, input("Enter all numbers separated by space: ").split()))
+        if len(nums) != 4:
+            return "Error: Please enter exactly 4 numbers."
+        real = nums[0] * nums[2] - nums[1] * nums[3]
+        imag = nums[0] * nums[3] + nums[2] * nums[1]
+        return f"{real} + i{imag}"
+
+    elif choice == "4":
+        nums = list(map(int, input("Enter all numbers separated by space (exactly 4 elements): ").split()))
+        if len(nums) != 4:
+            return "Error: Please enter exactly 4 numbers."
+        denominator = nums[2] ** 2 + nums[3] ** 2
+        if denominator == 0:
+            return "Error: Division by zero is not allowed."
+        real = (nums[0] * nums[2] + nums[1] * nums[3]) / denominator
+        imag = (nums[0] * nums[2] - nums[0] * nums[3]) / denominator
+        return f"{real} + i{imag}"
+
+
+
+
+def main():
+    while True:
+        print("What would you like to do? (addition, subtraction, multiplication, division, average, "
+              " complex_arithmetic, or quit)")
+        choice = input().strip().lower()
+        if choice == 'addition':
+            print(f"Result: {addition()}")
+        elif choice == 'subtraction':
+            print(f"Result: {subtraction()}")
+        elif choice == 'multiplication':
+            print(f"Result: {multiplication()}")
+        elif choice == 'division':
+            print(f"Result: {division()}")
+        elif choice == 'average':
+            print(f"Result: {average()}")
+        elif choice == 'factorial':
+            print(f"Result: {factorial()}")
+        elif choice == 'complex_arithmetic':
+            print(f"Result: {complex_arithmetic()}")
+        elif choice == 'quit':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == "__main__":
+    main()
