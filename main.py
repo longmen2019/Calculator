@@ -1,3 +1,8 @@
+'''
+Change words to number and find the update read me, and update on linkedin or replit
+'''
+
+
 # """Imports the os and time modules from the Python Standard Library.
 # The os module provides a way of using operating system dependent functionality,
 # like reading or writing to the file system.
