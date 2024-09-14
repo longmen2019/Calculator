@@ -1,25 +1,27 @@
-"""Imports the os and time modules from the Python Standard Library.
-The os module provides a way of using operating system dependent functionality,
-like reading or writing to the file system.
-The time module provides various time-related functions, like getting the current time or pausing
-the execution of the script."""
+# """Imports the os and time modules from the Python Standard Library.
+# The os module provides a way of using operating system dependent functionality,
+# like reading or writing to the file system.
+# The time module provides various time-related functions, like getting the current time or pausing
+# the execution of the script."""
 import os
 import time
 import statistics
 import math
 
-'''Adding a question that ask, what would you like to do, and when the responder said i want to this function or that function it will directily
-take him to the function'''
-
-
-def addition():
+#
+# '''Adding a question that ask, what would you like to do, and when the responder said i want to this function or that function it will directily
+# take him to the function'''
+#
+#
+def addition(nums):
     """This function asks the user to enter a series of numbers separated by spaces. It then adds all the numbers
     together and returns the result."""
     nums = list(map(float, (input("Enter all numbers separately by space: ").split())))
     return sum(nums)
 
 
-# print(addition())
+# # print(addition())
+#
 
 def subtraction():
     """This function asks the user to enter a series of number separated by spaces. It then subtracts the second
@@ -32,9 +34,9 @@ def subtraction():
     for num in nums[1:]:
         result -= num
     return result
-
-
-# print(subtraction())
+#
+#
+# # print(subtraction())
 def multiplication():
     """This function asks the user to enter a series of number separated by spaces. It then multiply all the numbers
     together and return the result."""
@@ -74,9 +76,6 @@ def division():
     # return n1/n2
 
 
-# # Example usage
-# print(division())
-
 def average():
     """This function takes space space separated number series and then convert it to a list. Then calculates the average
     of that list of numbers."""
@@ -86,9 +85,6 @@ def average():
     result = statistics.mean(nums)
     return result
 
-
-# # Example usage
-# print(average())
 
 def factorial():
     """ Function to calculate the factorial of a number. Takes a number as an argument,
@@ -110,10 +106,8 @@ def factorial():
         return "Invalid input: Please enter an integer. "
 
     return math.factorial(nums)
-# Example usage
-# print(factorial())
-def complex_arithmetic():
 
+def complex_calculator():
     """
     Function to execute complex arithmetic operations such as addition, subtraction, multiplication, and division.
     Asks the user to choose the operation and input the complex numbers as real and imaginary parts, performs to
@@ -125,18 +119,9 @@ def complex_arithmetic():
     print("Enter 4 for complex division")
     choice = input("Enter your choice: ")
     if choice == "1":
-        nums = list(map(int,input("Enter all numbers separated by space: ").split()))
-        # real_sum = 0
-        # imag_sum = 0
-        # for i in range(0, len(nums)-1, 2):
-        #     real_sum += nums[i]
-        # for i in range(2, len(nums)-1, 2):
-        #     imag_sum += nums[i]
-        # imag_sum += nums[-1]
-        # return f"{real_sum}+ i{imag_sum}"
-        # Alternate method
-        real_sum = sum(nums[0::2]) # Sum of all real parts (even indices)
-        imag_sum = sum(nums[1::2]) # Sum of all real parts (odd indices)
+        nums = list(map(int, input("Enter all numbers separated by space: ").split()))
+        real_sum = sum(nums[0::2])  # Sum of all real parts (even indices)
+        imag_sum = sum(nums[1::2])  # Sum of all real parts (odd indices)
         return f"{real_sum} + i{imag_sum}"
     elif choice == "2":
         nums = list(map(int, input("Enter all numbers separated by space: ").split()))
@@ -168,12 +153,20 @@ def complex_arithmetic():
         return f"{real} + i{imag}"
 
 
-
+def binomial(nums):
+    """
+    Function to calculate the binomial coefficient.
+    Takes two numbers as arguments, calculates the binomial coefficient using the formula n!/(k!(n-k)!), and returns
+    the result.
+    """
+    result = math.factorial(nums[0]) // (math.factorial(nums[1]) * math.factorial(nums[0] - nums[1]))
+    return result
 
 def main():
     while True:
-        print("What would you like to do? (addition, subtraction, multiplication, division, average, "
-              " complex_arithmetic, or quit)")
+        print(
+            "Choose an operation: (addition, subtraction, multiplication, division, average, "
+            "factorial, complex_calculator, binomial coefficient, or quit)")
         choice = input().strip().lower()
         if choice == 'addition':
             print(f"Result: {addition()}")
@@ -186,15 +179,27 @@ def main():
         elif choice == 'average':
             print(f"Result: {average()}")
         elif choice == 'factorial':
-            print(f"Result: {factorial()}")
-        elif choice == 'complex_arithmetic':
-            print(f"Result: {complex_arithmetic()}")
+            num = int(input("Enter the number: "))
+            if num < 0:
+                print("Invalid entry")
+                continue
+            print(f"Result: {factorial(num)}")
+        elif choice == 'complex_calculator':
+            print(f"Result: {complex_calculator()}")
+        elif choice == 'binomial coefficient':
+            nums = list(map(int, input("Enter all numbers separated by space (exactly 2 elements): ").split()))
+            if len(nums) != 2:
+                print("Error: Please enter exactly 2 numbers.")
+                continue
+            if nums[0] < nums[1]:
+                print("Error: The first number must be greater than or equal to the second number.")
+                continue
+            print(f"Result: {binomial(nums)}")
         elif choice == 'quit':
             print("Goodbye!")
             break
         else:
             print("Invalid choice. Please try again.")
-
 
 if __name__ == "__main__":
     main()
