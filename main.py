@@ -10,10 +10,6 @@ import time
 import statistics
 import math
 
-
-'''Adding a question that ask, what would you like to do, and when the responder said i want to this function or that function it will directily
-take him to the function'''
-
 def addition():
     """This function asks the user to enter a series of numbers separated by spaces. It then adds all the numbers
     together and returns the result."""
